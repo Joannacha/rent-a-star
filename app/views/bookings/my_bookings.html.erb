@@ -1,0 +1,7 @@
+
+<ol>
+  <% @bookings.each do |booking| %>
+  <li> <%= booking.star.name %> </li>
+  <button class = "btn btn-warning"> <%= link_to "Delete", booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' }%> </button>
+  <% end  %>
+</ol>
