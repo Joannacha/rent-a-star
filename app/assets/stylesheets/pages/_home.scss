@@ -1,1 +1,21 @@
 // Specific CSS for your home-page
+@import "../layouts/cards";
+
+.container{
+  margin: 20px auto; /* Set automatic margins on right/left */
+  background-color: lightgrey;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 1199px) {
+  .container {
+    width: 90%;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .container {
+    width: 1080px;
+  }
+}
