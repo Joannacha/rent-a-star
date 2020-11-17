@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [ :show, :destroy ] do
     resources :reviews, only: [ :create ]
   end
-  get "/my_bookings", to: "bookings#my_bookings"
-  get "/my_listings", to: "bookings#my_listings"
+
+  get '/my_bookings', to: "bookings#my_bookings"
+  get '/my_listings', to: "bookings#my_listings"
 end
