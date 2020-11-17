@@ -1,0 +1,5 @@
+<ol>
+  <% @bookings.each do |booking| %>
+  <li> <strong><%= booking.star.name %> </strong> from <%= booking.start_date %> to <%= booking.end_date %></li>
+  <% end  %>
+</ol>

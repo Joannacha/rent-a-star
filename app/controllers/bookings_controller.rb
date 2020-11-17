@@ -16,13 +16,12 @@ class BookingsController < ApplicationController
     end
   end
 
-  def my_booking
-    @bookings = Booking.where(:user_id == current_user)
+  def my_bookings
+    @bookings = Booking.where(user_id: current_user.id)
   end
 
-  def my_listing
-    @my_star = Star.where(:user_id == current_user)
-    @bookings = Booking.where(:star_id == @my_star)
+  def my_listings
+     @bookings = Booking.joins(:star).where("stars.user_id = #{current_user.id}")
   end
 
   def show
