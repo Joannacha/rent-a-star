@@ -7,12 +7,13 @@ class StarsController < ApplicationController
   end
   
   def show
+    @booking = Booking.new
   end
 
   def new
     @star = Star.new
   end
-  
+
   def create
     @star = Star.new(star_params)
     if @star.save
@@ -30,7 +31,7 @@ class StarsController < ApplicationController
 
     redirect_to star_path(@star)
   end
-    
+
   def destroy
     @star.destroy
   end

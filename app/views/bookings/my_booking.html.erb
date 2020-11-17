@@ -1,0 +1,6 @@
+
+<ol>
+  <% @bookings.each do |booking| %>
+  <li class = "btn btn-danger"> <%= booking.star.name %> / <%= "Delete this booking ? ", booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' }%> </li>
+  <% end  %>
+</ol>

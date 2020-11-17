@@ -20,5 +20,11 @@
     </p>
   </div>
 
-</div>
+  <%= simple_form_for [@star, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "Add a booking" %>
+<% end %>
 
+
+</div>
