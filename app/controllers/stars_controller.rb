@@ -4,7 +4,7 @@ class StarsController < ApplicationController
   def show
   end
 
-  def destoy
+  def destroy
     @star = Star.find(params[:id])
     @star.destroy
   end
