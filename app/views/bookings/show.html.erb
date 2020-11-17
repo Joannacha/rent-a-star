@@ -1,0 +1,12 @@
+
+<h1> Booking for <strong><%= @booking.star.name %></strong> </h1>
+<h3> <%= (@booking.star.price * (@booking.end_date - @booking.start_date)).to_i %> €</h3>
+<p> <%= @booking.start_date %>  to  <%= @booking.end_date %></p>
+<br>
+<br>
+<br>
+<%= simple_form_for [ @booking, @review ] do |f| %>
+  <%= f.input :rating, :required => false %>
+  <%= f.input :comment, :required => false %>
+  <%= f.submit "Add a review" %>
+<% end %>
