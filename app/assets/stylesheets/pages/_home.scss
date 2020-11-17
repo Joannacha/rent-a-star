@@ -3,9 +3,11 @@
 
 .container{
   margin: 20px auto; /* Set automatic margins on right/left */
-  background-color: lightgrey;
 }
 
+.row{
+  justify-content: center;
+}
 // Smallest device
 @media (min-width: 100px) and (max-width: 1199px) {
   .container {
