@@ -1,7 +1,7 @@
 .cards-star {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 26px;
+  grid-gap: 25px;
 }
 
 // Smallest device
@@ -22,6 +22,7 @@
 @media (min-width: 768px) {
   .cards-star {
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 25px 5px;
   }
 }
 
