@@ -1,9 +1,14 @@
 class StarsController < ApplicationController
+  before_action :set_star, only: [:show, :update, :destroy, :edit]
+  skip_before_action :authenticate_user!, only: :show
+    
+  def show
+  end
 
   def new
     @star = Star.new
   end
-
+  
   def create
     @star = Star.new(star_params)
     if @star.save
@@ -14,14 +19,16 @@ class StarsController < ApplicationController
   end
 
   def edit
-    set_star
   end
 
   def update
-    set_star
     @star.update(star_params)
 
     redirect_to star_path(@star)
+  end
+    
+  def destroy
+    @star.destroy
   end
 
   private
