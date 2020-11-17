@@ -1,5 +1,6 @@
 class StarsController < ApplicationController
   before_action :set_star, only: [:show, :update, :destroy]
+  skip_action :authenticate_user!, only: :show
 
   def show
   end
