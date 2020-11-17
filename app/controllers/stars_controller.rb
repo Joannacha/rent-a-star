@@ -1,12 +1,33 @@
 class StarsController < ApplicationController
-  before_action :set_star, only: [:show, :update, :destroy]
-  skip_action :authenticate_user!, only: :show
-
+  before_action :set_star, only: [:show, :update, :destroy, :edit]
+  skip_before_action :authenticate_user!, only: :show
+    
   def show
   end
 
+  def new
+    @star = Star.new
+  end
+  
+  def create
+    @star = Star.new(star_params)
+    if @star.save
+      redirect_to star_path(@star)
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @star.update(star_params)
+
+    redirect_to star_path(@star)
+  end
+    
   def destroy
-    @star = Star.find(params[:id])
     @star.destroy
   end
 
@@ -14,5 +35,9 @@ class StarsController < ApplicationController
 
   def set_star
     @star = Star.find(params[:id])
+  end
+
+  def star_params
+    params.require(:star).permit(:name, :price)
   end
 end
