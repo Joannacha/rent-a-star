@@ -1,7 +1,4 @@
 .banner {
-  background-image: 
-    linear-gradient(rgba(208, 134, 140, 0.2),rgba(208, 134, 140, 0.2)), 
-    image-url('banner.jpg');
   background-size: cover;
   background-position: center;
   padding: 150px 0;
@@ -10,7 +7,19 @@
 .banner h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 500;
+}
+
+.banner-home {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.2)), 
+    image-url('banner-home.jpg');
+}
+
+.banner-index {
+  background-image: 
+  linear-gradient(rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.2)), 
+  image-url('banner-index.png');
 }
