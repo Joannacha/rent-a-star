@@ -1,9 +1,16 @@
+<div class="banner banner-index">
+  <h1 class="text-center">OUR STARS</h1>
+</div>
 <div class="cards-star my-5">
   <% @stars.each do |star| %>
     <div class="card-star d-flex flex-column">
-      <div class="card-star-image">
+    <% if star.photos.empty? %>
+      <div class="card-star-image" style="background-image: url('<%= image_url("logo.jpg") %>');">
+    <% else  %>
+      <div class="card-star-image" style="background-image: url('<%= url_for(star.photos.first) %>');">
+    <% end  %>
       </div>
-      <div class="card-star-infos d-flex flex-column m-3">
+      <div class="card-star-infos d-flex flex-column justify-content-around m-3">
         <h1 class="m-0"><%= star.name %></h1>
         <%= link_to 'See details', star_path(star) %>
         <h2 class="m-0"><%= star.price %> €</h2>
