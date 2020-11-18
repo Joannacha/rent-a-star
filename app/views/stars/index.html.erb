@@ -1,18 +1,23 @@
-<div class="product_box style">
-<!--   <h1>Storie of ours Stars</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-    culpa qui officia deserunt mollit anim id est laborum.
-  </p> -->
-  <ul><% @stars.each do |star| %>
-    <li><%= star.name %></li>
-    <li><%= star.price %></li>
-    <li><%= %></li>
+<div class="cards-star my-5">
+  <% @stars.each do |star| %>
+    <div class="card-star d-flex flex-column">
+      <div class="card-star-image">
+      </div>
+      <div class="card-star-infos d-flex flex-column m-3">
+        <h1 class="m-0"><%= star.name %></h1>
+        <%= link_to 'See details', star_path(star) %>
+        <h2 class="m-0"><%= star.price %> €</h2>
+        <%= link_to 'Rent this star', star_path(star), class: "btn btn-primary" %>
+        <div class="rating">
+          <% star.average_rating.times do %>
+            <i class="fas fa-star pb-1"></i>
+          <% end %>
+          <% (5 - star.average_rating).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+          ( <%= star.reviews.count %> rating )
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
-
-
