@@ -1,6 +1,6 @@
 .booking{
   margin-bottom: 25px;
-  img {
+  .planet-img {
     width: 100%;
     height: 300px;
   }
@@ -33,6 +33,11 @@
     &:hover{
       text-decoration: none;
     }
+  }
+  .avatar{
+    position: absolute;
+    right: 25px;
+    top: -20px;
   }
 }
 
