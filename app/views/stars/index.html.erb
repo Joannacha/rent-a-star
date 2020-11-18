@@ -11,7 +11,7 @@
   <ul><% @stars.each do |star| %>
     <li><%= star.name %></li>
     <li><%= star.price %></li>
-    <li><%= %></li>
+    <li><%= cl_image_tag star.photos.first.key, height: 300, width: 400, crop: :fill %></li>
   <% end %>
 </div>
 
