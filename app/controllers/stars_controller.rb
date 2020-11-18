@@ -1,11 +1,11 @@
 class StarsController < ApplicationController
   before_action :set_star, only: [:show, :update, :destroy, :edit]
   skip_before_action :authenticate_user!, only: [ :show, :index ]
-  
+
   def index
     @stars = Star.all
   end
-  
+
   def show
     @booking = Booking.new
   end
@@ -44,6 +44,6 @@ class StarsController < ApplicationController
   end
 
   def star_params
-    params.require(:star).permit(:name, :price)
+    params.require(:star).permit(:name, :price, photos: [])
   end
 end
