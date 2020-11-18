@@ -1,7 +1,7 @@
 <%= simple_form_for(@star) do |f| %>
   <%= f.input :name, :required => false %>
   <%= f.input :price, :required => false %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :photos, as: :file, input_html: { class: 'd-none' }, label_html: { multiple: true, class: 'btn-primaire text-center align-item-center pt-2' }  %>
   <hr>
-  <%= f.submit %>
+  <%= f.submit 'Create a star', class: 'btn-primaire m-2' %>
 <% end %>
