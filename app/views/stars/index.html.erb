@@ -1,19 +1,22 @@
 <div class="cards-star my-5">
   <% @stars.each do |star| %>
-    <div class="card-star">
+    <div class="card-star d-flex flex-column">
       <div class="card-star-image">
       </div>
-      <div class="card-star-infos m-3">
-        <h1><%= star.name %></h1>
-        <%= link_to 'Star details', star_path(star) %>
-        <h2><%= star.price %> €</h2>
-        <%= link_to 'Rent this star'%>
-        <% star.average_rating.times do %>
-          <i class="fas fa-star pb-1"></i>
-        <% end %>
-        <% (5 - star.average_rating).times do %>
-          <i class="far fa-star"></i>
-        <% end %>
+      <div class="card-star-infos d-flex flex-column m-3">
+        <h1 class="m-0"><%= star.name %></h1>
+        <%= link_to 'See details', star_path(star) %>
+        <h2 class="m-0"><%= star.price %> €</h2>
+        <%= link_to 'Rent this star', star_path(star), class: "btn btn-primary" %>
+        <div class="rating">
+          <% star.average_rating.times do %>
+            <i class="fas fa-star pb-1"></i>
+          <% end %>
+          <% (5 - star.average_rating).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+          ( <%= star.reviews.count %> rating )
+        </div>
       </div>
     </div>
   <% end %>
