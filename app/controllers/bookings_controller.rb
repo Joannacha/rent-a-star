@@ -3,14 +3,15 @@ class BookingsController < ApplicationController
   before_action :set_star, only: [:create, :destroy]
   def new
     @booking = Booking.new
-    authorise @booking
+    authorize @booking
   end
 
   def create
     @booking = current_user.bookings.new(booking_params)
-    authorise @booking
-    authorise @star, :show  # w/o :show we would use the create? method of StarPolicy ?
     @booking.star = @star
+    authorize @booking
+    authorize @star, :show  # w/o :show we would use the create? method of StarPolicy ?
+
     if @booking.save
       redirect_to star_path(@star), notice: 'Booking was successfully created.'
     else
@@ -29,11 +30,11 @@ class BookingsController < ApplicationController
 
   def show
     @review = @booking.review.new
-    authorise @review, :create # w/o :create we would use the show? method of ReviewPolicy ?
+    authorize @review, :create # w/o :create we would use the show? method of ReviewPolicy ?
   end
 
   def destroy
-    authorise @booking
+    authorize @booking
     @booking.destroy
     redirect_to star_path(@star), notice: 'Booking was successfully destroy'
   end

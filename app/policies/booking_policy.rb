@@ -1,6 +1,6 @@
 class BookingPolicy < ApplicationPolicy
   def create?
-    record.star.user_id != user
+    record.star.user_id != user.id
   end
 
   def show?
@@ -20,8 +20,8 @@ class BookingPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.joins(:star).where("stars.user_id = #{current_user.id}
-                                or bookings.user_id = #{current_user.id}")
+      scope.joins(:star).where("""stars.user_id    = #{user.id} or
+                                  bookings.user_id = #{user.id}""")
     end
   end
 end
