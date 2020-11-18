@@ -17,7 +17,7 @@ class StarPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.where(user: user)
+      scope
     end
   end
 end

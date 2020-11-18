@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking = current_user.bookings.new(booking_params)
     @booking.star = @star
     authorize @booking
-    authorize @star, :show  # w/o :show we would use the create? method of StarPolicy ?
+    authorize @star, :show?  # w/o :show we would use the create? method of StarPolicy ?
 
     if @booking.save
       redirect_to star_path(@star), notice: 'Booking was successfully created.'
@@ -20,8 +20,8 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
-    # @bookings = Booking.where(user_id: current_user.id)
-    @bookings = policy_scope(Booking).where(user_id: current_user.id)
+    #@bookings = Booking.where(user_id: current_user.id)
+    @bookings = policy_scope(Booking)#.where(user_id: current_user.id)
   end
 
   def my_listings
@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
 
   def show
     @review = @booking.review.new
-    authorize @review, :create # w/o :create we would use the show? method of ReviewPolicy ?
+    authorize @review, :create? # w/o :create we would use the show? method of ReviewPolicy ?
   end
 
   def destroy

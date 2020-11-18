@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   include Pundit
 
-  after_action :verify_authorized, except: :index, unless: :skip_pundit?
-  after_action :verify_policy_scoped, only: [:index, :my_bookings], unless: :skip_pundit?
+  after_action :verify_authorized, except: [:index, :my_bookings, :my_listings], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: [:my_bookings, :my_listings], unless: :skip_pundit?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
