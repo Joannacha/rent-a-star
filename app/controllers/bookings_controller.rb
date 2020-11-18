@@ -3,12 +3,14 @@ class BookingsController < ApplicationController
   before_action :set_star, only: [:create, :destroy]
   def new
     @booking = Booking.new
+    authorise @booking
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = current_user.bookings.new(booking_params)
+    authorise @booking
+    authorise @star, :show  # w/o :show we would use the create? method of StarPolicy ?
     @booking.star = @star
-    @booking.user = current_user
     if @booking.save
       redirect_to star_path(@star), notice: 'Booking was successfully created.'
     else
@@ -17,18 +19,21 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
-    @bookings = Booking.where(user_id: current_user.id)
+    # @bookings = Booking.where(user_id: current_user.id)
+    @bookings = policy_scope(Booking).where(user_id: current_user.id)
   end
 
   def my_listings
-     @bookings = Booking.joins(:star).where("stars.user_id = #{current_user.id}")
+    @bookings = policy_scope(Booking).where("stars.user_id = #{current_user.id}")
   end
 
   def show
-    @review = Review.new
+    @review = @booking.review.new
+    authorise @review, :create # w/o :create we would use the show? method of ReviewPolicy ?
   end
 
   def destroy
+    authorise @booking
     @booking.destroy
     redirect_to star_path(@star), notice: 'Booking was successfully destroy'
   end

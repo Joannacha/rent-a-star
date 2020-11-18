@@ -1,21 +1,25 @@
 class StarsController < ApplicationController
   before_action :set_star, only: [:show, :update, :destroy, :edit]
   skip_before_action :authenticate_user!, only: [ :show, :index ]
-  
+
   def index
-    @stars = Star.all
+    @stars = policy_scope(Star)
   end
-  
+
   def show
     @booking = Booking.new
+    authorize @star
+    authorize @booking, :new?
   end
 
   def new
     @star = Star.new
+    authorize @star
   end
 
   def create
     @star = Star.new(star_params)
+    authorize @star
     if @star.save
       redirect_to star_path(@star)
     else
@@ -24,15 +28,17 @@ class StarsController < ApplicationController
   end
 
   def edit
+    authorize @star
   end
 
   def update
+    authorize @star
     @star.update(star_params)
-
     redirect_to star_path(@star)
   end
 
   def destroy
+    authorize @star
     @star.destroy
   end
 
