@@ -1,0 +1,34 @@
+.cards-star {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 25px;
+}
+
+// Smallest device
+@media (min-width: 100px) {
+  .cards-star {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards-star {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards-star {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 25px 5px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards-star {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

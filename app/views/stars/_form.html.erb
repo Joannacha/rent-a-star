@@ -1,6 +1,7 @@
 <%= simple_form_for(@star) do |f| %>
   <%= f.input :name, :required => false %>
   <%= f.input :price, :required => false %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <hr>
   <%= f.submit %>
 <% end %>
