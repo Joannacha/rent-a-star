@@ -2,6 +2,9 @@
   <% @stars.each do |star| %>
     <div class="card-star d-flex flex-column">
       <div class="card-star-image">
+        <% if star.photos.attached? %>
+          <%= cl_image_tag star.photos.first.key, crop: :fill %>
+        <% end %>
       </div>
       <div class="card-star-infos d-flex flex-column m-3">
         <h1 class="m-0"><%= star.name %></h1>
