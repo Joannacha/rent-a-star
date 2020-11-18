@@ -2,9 +2,6 @@
   <% @stars.each do |star| %>
     <div class="card-star d-flex flex-column">
       <div class="card-star-image">
-        <% if star.photos.attached? %>
-          <%= cl_image_tag star.photos.first.key, crop: :fill %>
-        <% end %>
       </div>
       <div class="card-star-infos d-flex flex-column m-3">
         <h1 class="m-0"><%= star.name %></h1>
@@ -24,28 +21,3 @@
     </div>
   <% end %>
 </div>
-
-
-
-
-<!--   <h1>Storie of ours Stars</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-    culpa qui officia deserunt mollit anim id est laborum.
-<<<<<<< HEAD
-  </p> -->
-=======
-  </p> -->
-  <ul><% @stars.each do |star| %>
-    <li><%= star.name %></li>
-    <li><%= star.price %></li>
-    <li><%= cl_image_tag star.photos.first.key, height: 300, width: 400, crop: :fill %></li>
-  <% end %>
-</div>
-
-
->>>>>>> master
