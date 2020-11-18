@@ -7,7 +7,11 @@
     <% @bookings.each do |booking| %>
       <div class="col-12 col-lg-4 booking">
         <div class="booking-box">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <% if booking.star.photos.empty? %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <% else  %>
+            <%= cl_image_tag(booking.star.photos.first.key) %>
+          <% end %>
           <div class="card-trip-infos">
             <div class="trip-desc">
               <div class="trip-text-desc">
