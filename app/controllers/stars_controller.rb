@@ -3,7 +3,7 @@ class StarsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :show, :index ]
 
   def index
-    @stars = Star.all
+    @stars = Star.all.order(updated_at: :desc)
   end
 
   def show
