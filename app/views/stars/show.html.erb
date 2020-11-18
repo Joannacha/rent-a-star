@@ -18,6 +18,10 @@
       <strong>Owner:</strong>
       <%= @star.user.username %>
     </p>
+
+    <% @star.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
   </div>
 
   <%= simple_form_for [@star, @booking] do |f| %>
