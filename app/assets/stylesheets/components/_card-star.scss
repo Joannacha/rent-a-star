@@ -1,0 +1,36 @@
+.card-star {
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 350px;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.card-star-image {
+  background-image: image-url("logo.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 40%;
+}
+
+.card-star-infos {
+  text-align: center;
+  align-content: space-between;
+  flex-grow: 1;
+  
+  h1, h2 {
+    font-size: 25px;
+  }
+
+  a {
+    color: black;
+    
+    &:hover {
+      text-decoration: none;
+      font-size: 15px;
+      transition-duration: 0.5s;
+    }
+  }
+}
+
+
