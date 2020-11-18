@@ -1,4 +1,4 @@
-<div class="banner banner-index">
+<div class="banner-container banner-index">
   <h1 class="text-center">OUR STARS</h1>
 </div>
 <div class="cards-star my-5">
@@ -11,10 +11,7 @@
     <% end  %>
       </div>
       <div class="card-star-infos d-flex flex-column justify-content-around m-3">
-        <h1 class="m-0"><%= star.name %></h1>
-        <%= link_to 'See details', star_path(star) %>
-        <h2 class="m-0"><%= star.price %> €</h2>
-        <%= link_to 'Rent this star', star_path(star), class: "btn btn-primary" %>
+        <h1 class="m-0"><%= link_to star.name.upcase, star_path(star) %></h1>
         <div class="rating">
           <% star.average_rating.times do %>
             <i class="fas fa-star pb-1"></i>
@@ -24,6 +21,7 @@
           <% end %>
           ( <%= star.reviews.count %> rating )
         </div>
+        <%# <%= link_to 'Rent this star', star_path(star), class: "btn" %>
       </div>
     </div>
   <% end %>

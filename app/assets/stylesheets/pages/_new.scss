@@ -1,0 +1,27 @@
+// Smallest device
+@media (min-width: 100px) {
+  .new-image {
+    width: 400px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .new-image {
+    width: 400px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .new-image {
+    width: auto;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .new-image {
+    width: auto;
+  }
+}

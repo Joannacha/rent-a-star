@@ -13,4 +13,8 @@
 @import "pages/index";
 @import "layouts/index";
 
+body {
+  overflow-x: hidden;
+  height: 100%;
+}
 
