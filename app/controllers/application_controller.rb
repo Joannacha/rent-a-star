@@ -29,7 +29,8 @@ class ApplicationController < ActionController::Base
                          :password_confirmation,
                          :first_name,
                          :last_name,
-                         :username)
+                         :username,
+                         :photo)
     end
 
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
@@ -40,7 +41,8 @@ class ApplicationController < ActionController::Base
                          :phone,
                          :password,
                          :password_confirmation,
-                         :current_password)
+                         :current_password,
+                         :photo)
     end
   end
 end
