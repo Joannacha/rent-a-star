@@ -7,8 +7,8 @@ class StarsController < ApplicationController
   end
 
   def show
-    @booking = @star.bookings.new
     authorize @star
+    @booking = @star.bookings.new
   end
 
   def new

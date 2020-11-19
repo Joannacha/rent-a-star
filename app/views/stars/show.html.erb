@@ -28,7 +28,7 @@
     <% end %>
   </div>
 
-  <% if policy(@booking).create? %>
+  <% if (user_signed_in? && policy(@booking).create?) || !user_signed_in? %>
 
     <%= simple_form_for [@star, @booking] do |f| %>
     <%= f.input :start_date %>
