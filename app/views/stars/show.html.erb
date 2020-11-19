@@ -1,58 +1,68 @@
-<% if @star.user == current_user %>
-  You own this star 😀
-<% end %>
-<div class="row mx-5 my-3 d-flex justify-content-between align-items-center">
-  <div class="col-12 col-lg-8 border-container px-4 py-3 mb-3">
-    <div class="details">
-      <div class="owner d-flex flex-column align-items-center">
+
+<div class="row mx-5 my-3 align-items-center">
+  <div class="planet">
+    <% if @star.photos.empty? %>
+        <img src="<%= asset_path('default-planet.png') %>" class="planet-image"/>
+    <% else  %>
+        <%= cl_image_tag(@star.photos.first.key, class: "planet-image") %>
+    <% end %>
+  </div>
+  <div class="col-9 col-sm-6 offset-3 col-lg-6 offset-6 px-4 py-3 mb-3">
+    <div class="details d-flex flex-column">
+      <div class="owner mb-2 d-flex align-items-center">
         <% if @star.user.photo.attached? %>
           <%= cl_image_tag(@star.user.photo.key, class: "avatar show-avatar" )%>
         <% else %>
           <img src="<%= asset_path('default-avatar.png') %>" class="avatar show-avatar">
         <% end %>
-        <%= @star.user.username %>
+        <p class="ml-1 m-0">
+          <% if @star.user == current_user %>
+            You own this star 😀
+          <% else %>
+          <%= @star.user.first_name %> <%= @star.user.last_name %> owns this star
+          <% end %></p>
       </div>
-      <h1><%= @star.name %></h1>
-      <div class="rating">
+      <h1>Name</h1>
+      <p><%= @star.name %></p>
+      <hr class="m-0">
+      <h1>Galaxy</h1>
+      <p><%= @star.galaxy %></p>
+      <hr class="m-0">      
+      <h1>Description</h1>
+      <p class="text-justify description"><%= @star.description %></p>
+      <hr class="m-0">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1>Rating</h1>
+        <div class="rating">
           <% @star.average_rating.times do %>
             <i class="fas fa-star pb-1"></i>
           <% end %>
           <% (5 - @star.average_rating).times do %>
             <i class="far fa-star"></i>
           <% end %>
-          ( <%= @star.reviews.count %> rating )
+            ( <%= @star.reviews.count %> <%= @star.reviews.count > 1 ? "ratings" : "rating" %> )
         </div>
-      <div>
-        <% if @star.photos.empty? %>
-            <img src="<%= asset_path('default-planet.png') %>"/>
-        <% else  %>
-            <%= cl_image_tag(@star.photos.first.key) %>
-        <% end %>
       </div>
-      <div class="d-flex justify-content-between">
-        <h3>Details</h3>
+      <hr class="m-0">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1>Price</h1>
         <h3><%= @star.price %> €</h3>
       </div>
-      <p>Galaxy : <%= @star.galaxy %></p>
-      <p class="text-justify"><%= @star.description %></p>
     </div>
-  </div>
-  <div class="col-6 col-lg-3 p-0">
-    <div class="booking">
+    <div class="booking d-flex flex-column">
       <% if (user_signed_in? && policy(@booking).create?) || !user_signed_in? %>
-        <div class="select-dates border-container p-3">
-          <h3>Select dates</h3>
-          <%= simple_form_for [@star, @booking] do |f| %>
+      <div class="select-dates">
+        <p>Select dates</p>
+        <%= simple_form_for [@star, @booking] do |f| %>
           <div class="d-flex justify-content-around">
           <%= f.input :start_date, label: false, input_html: { id: "start-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "Start date" %>
           <%= f.input :end_date, label: false, input_html: { id: "end-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "End date" %>
-          </div>
           <%= f.submit "Book now", class: "btn" %>
-          <% end %>
-        </div>
+        <% end %>
+          </div>
       <% else %>
         <%= link_to "Update Star",  edit_star_path(@star), class: "btn"%>
       <% end %>
     </div>
-    </div>
+  </div>
 </div>

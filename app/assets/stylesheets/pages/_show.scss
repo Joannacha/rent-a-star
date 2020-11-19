@@ -3,26 +3,13 @@ h3 {
   font-weight: 700;
 }
 
-.owner {
-  position: absolute;
-  right: 0;
-  background-color: #ea728c;
-  border-radius: 3px;
-  padding: 8px;
-  color: white;
-  opacity: 0.8;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-
 .details {
   position: relative;
 }
 
-.booking {
-  width: 290px;
+h1 {
+  margin-top: 10px;
+  font-size: 27px;
 }
 
 .result-info {
@@ -30,4 +17,47 @@ h3 {
     border-radius: 3px;
     padding: 2px 14px;
     color: white;
+}
+
+.planet {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: absolute;
+  left: -600px;
+  top: -100px;
+}
+
+.planet-image {
+  width: 1000px;
+}
+
+.row {
+  position: relative;
+}
+
+@media(max-width: 992px) {
+  .planet {
+    left: -200px;
+  }
+  .planet-image {
+    width: 800px;
+  }
+}
+
+@media(max-width: 768px) {
+  .planet {
+    left: 100px;
+  }
+  .planet-image {
+    width: 700px;
+  }
+}
+
+p {
+  margin: 0px 0px 10px 0px;
+}
+
+hr {
+  border: 1px solid rgba(0, 0, 0, 0.514);
 }
