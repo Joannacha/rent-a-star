@@ -13,4 +13,14 @@ class Star < ApplicationRecord
     ratings = reviews.map { |review| review.rating }
     ratings.sum / ratings.count
   end
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [:name, :description, :galaxy],
+    associated_against: {
+      user: [:first_name, :last_name, :username]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end

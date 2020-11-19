@@ -3,7 +3,7 @@ class StarsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
 
   def index
-    @stars = policy_scope(Star).order(updated_at: :desc)
+    @stars = policy_scope(Star.global_search(params[:query])).order(updated_at: :desc)
   end
 
   def show
