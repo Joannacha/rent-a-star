@@ -28,7 +28,7 @@ users.each do |user|
   u_ids << user.id
 end
 
-15.times do
+15.times do |index|
   star = Star.new(
     name: Faker::Space.unique.star,
     price: rand(100..10000),
@@ -39,9 +39,9 @@ end
   It lives close to the #{Faker::Space.moon} moon, inside the #{Faker::Space.constellation} constellation.
   It was born #{rand(1..100000)} million years ago and was discovered by the #{Faker::Space.agency}.
   Its #{Faker::Space.distance_measurement} away from earth."
+  star.photos.attach(io: File.open("app/assets/images/Stars-#{index < 9 ? "0#{index + 1}" : index + 1}.png"), filename: "star.png", content_type: "image/png")
   star.save!
 end
-
 
 stars = Star.all
 s_ids = []
