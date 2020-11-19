@@ -1,0 +1,26 @@
+h3 {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.owner {
+  position: absolute;
+  right: 0;
+  background-color: #ea728c;
+  border-radius: 3px;
+  padding: 8px;
+  color: white;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.details {
+  position: relative;
+}
+
+.booking {
+  width: 290px;
+}
