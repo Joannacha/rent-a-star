@@ -22,7 +22,7 @@
               <% if booking.star.user.photo.attached? %>
                 <%= cl_image_tag(booking.star.user.photo.key, class: "avatar" )%>
               <% else %>
-                <img src="<%= asset_path('default-avatar.jpg') %>"
+                <img src="<%= asset_path('default-avatar.png') %>"
                      class="avatar">
               <% end %>
               <%= link_to "Cancel",
