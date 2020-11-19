@@ -3,7 +3,7 @@
   background-position: center;
 }
 
-.banner-container h1 {
+.banner-home h1 {
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
   font-size: 40px;
@@ -17,9 +17,3 @@
     padding: 150px 0;
 }
 
-.banner-index {
-  background-image: 
-  linear-gradient(rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.1)), 
-  image-url('banner-index.png');
-  padding: 200px 0;
-}

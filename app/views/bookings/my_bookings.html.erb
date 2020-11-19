@@ -8,7 +8,7 @@
       <div class="col-12 col-lg-4 booking">
         <div class="booking-box">
           <% if booking.star.photos.empty? %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="planet-img"/>
+            <img src="<%= asset_path('default-planet.png') %>" class="planet-img"/>
           <% else  %>
             <%= cl_image_tag(booking.star.photos.first.key, class: "planet-img") %>
           <% end %>

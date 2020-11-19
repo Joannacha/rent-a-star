@@ -1,4 +1,26 @@
-<div class = "container">
+<div class = "show-container">
+  <div class="row mx-5 my-3 align-items-center">
+    <div class="col-12 col-lg-9 border-container p-3">
+      <h1><%= @star.name %></h1>
+      <div class="rating">
+          <% @star.average_rating.times do %>
+            <i class="fas fa-star pb-1"></i>
+          <% end %>
+          <% (5 - @star.average_rating).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+          ( <%= @star.reviews.count %> rating )
+        </div>
+      <div class="">
+        <% if @star.photos.empty? %>
+            <img src="<%= asset_path('default-planet.png') %>"/>
+        <% else  %>
+            <%= cl_image_tag(@star.photos.first.key) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-12 col-lg-3">
+    </div>
   <div class = "show_logo">
 
   </div>
@@ -19,16 +41,14 @@
       <%= @star.user.username %>
     </p>
 
-    <% @star.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
+
   </div>
 
-  <%= simple_form_for [@star, @booking] do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit "Add a booking" %>
-<% end %>
 
-
+      <%= simple_form_for [@star, @booking] do |f| %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.submit "Add a booking" %>
+    <% end %>
+  </div>
 </div>
