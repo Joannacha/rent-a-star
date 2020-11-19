@@ -13,4 +13,10 @@
 @import "pages/index";
 @import "layouts/index";
 
+body {
+  overflow-x: hidden;
+}
 
+.body-container {
+  min-height: calc(100vh - 200px);
+}

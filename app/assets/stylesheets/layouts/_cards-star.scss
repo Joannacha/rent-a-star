@@ -12,22 +12,21 @@
 }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+@media (min-width: 640px) {
   .cards-star {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+@media (min-width: 915px) {
   .cards-star {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 25px 5px;
   }
 }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
+@media (min-width: 1290px) {
   .cards-star {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }

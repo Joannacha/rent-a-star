@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"> %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
@@ -15,7 +17,9 @@
     <%= render 'shared/navbar' %>
     <p class="notice m-0"><%= notice %></p>
     <p class="alert m-0"><%= alert %></p>
-    <%= yield %>
+    <div class="body-container">
+      <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>

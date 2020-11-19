@@ -3,7 +3,12 @@
 <h3> <%= (@booking.star.price * (@booking.end_date - @booking.start_date)).to_i %> €</h3>
 <p> <%= @booking.start_date %>  to  <%= @booking.end_date %></p>
 <br>
-<br>
+  <%= link_to "Cancel booking",
+              booking_path(@booking),
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "btn btn-danger"
+  %>
 <br>
 <%= simple_form_for [ @booking, @review ] do |f| %>
   <%= f.input :rating, :required => false %>
