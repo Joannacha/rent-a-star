@@ -14,6 +14,15 @@
     </div>
   </div> %>
 </div>
+<div class="mx-5 px-5">
+  <span class="result-info">
+  <% if params[:search][:query] != ""%>
+    <%= @nb_results %> search results for : "<%= params[:search][:query] %>"
+  <% else %>
+    Showing all our stars
+  <% end %>
+  </span>
+</div>
 <div class="grid-container m-5 px-5">
   <div class="cards-star">
     <% @stars.each do |star| %>
