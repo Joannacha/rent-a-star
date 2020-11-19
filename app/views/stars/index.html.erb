@@ -27,11 +27,12 @@
   <div class="cards-star">
     <% @stars.each do |star| %>
       <div class="card-star d-flex flex-column">
-      <% if star.photos.empty? %>
-        <div class="card-star-image" style="background-image: url('<%= image_url("default-planet.png") %>');">
-      <% else  %>
-        <div class="card-star-image" style="background-image: url('<%= url_for(star.photos.first) %>');">
-      <% end  %>
+        <div class="card-star-image">
+          <% if star.photos.empty? %>
+              <img src="<%= asset_path('default-planet.png') %>"/>
+          <% else  %>
+              <%= cl_image_tag(star.photos.first.key, height: 350) %>
+          <% end  %>
         </div>
         <div class="card-star-infos d-flex flex-column justify-content-around m-3">
           <h1 class="m-0"><%= link_to star.name.upcase, star_path(star) %></h1>
