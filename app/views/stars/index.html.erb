@@ -42,7 +42,7 @@
             <% (5 - star.average_rating).times do %>
               <i class="far fa-star"></i>
             <% end %>
-            ( <%= star.reviews.count %> rating )
+            ( <%= star.reviews.count %> <%= star.reviews.count > 1 ? "ratings" : "rating" %> )
           </div>
           <%# <%= link_to 'Rent this star', star_path(star), class: "btn" %>
         </div>
