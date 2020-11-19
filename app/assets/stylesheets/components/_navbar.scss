@@ -35,7 +35,7 @@
 // }
 
 .avatar-large {
-  animation: rotation 1s infinite linear;
+  animation: rotation-left 1s infinite linear;
 
   &:hover {
     animation: none;
@@ -43,7 +43,16 @@
   }
 }
 
-@keyframes rotation {
+@keyframes rotation-left {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
+}
+
+@keyframes rotation-right {
   from {
     transform: rotate(0deg);
   }
