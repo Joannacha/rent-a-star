@@ -1,6 +1,6 @@
 class StarsController < ApplicationController
   before_action :set_star, only: [:show, :update, :destroy, :edit]
-  skip_before_action :authenticate_user!, only: [ :show, :index ]
+  skip_before_action :authenticate_user!, only: [:show, :index]
 
   def index
     @stars = Star.all.order(updated_at: :desc)
@@ -44,6 +44,6 @@ class StarsController < ApplicationController
   end
 
   def star_params
-    params.require(:star).permit(:name, :price, photos: [])
+    params.require(:star).permit(:name, :price, :galaxy, :description, photos: [])
   end
 end
