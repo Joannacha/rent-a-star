@@ -25,11 +25,9 @@
                 <img src="<%= asset_path('default-avatar.png') %>"
                      class="avatar">
               <% end %>
-              <%= link_to "Cancel",
+              <%= link_to "More Details",
                   booking_path(booking),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' },
-                  class: "trip-delete"
+                  class: "trip-details"
               %>
             </div>
           </div>
