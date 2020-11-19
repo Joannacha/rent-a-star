@@ -3,7 +3,7 @@
   <%= f.input :price, :required => false %>
   <%= f.input :description, :required => false %>
   <%= f.input :galaxy, :required => false %>
-  <%= f.input :photos, as: :file, input_html: { class: 'd-none', multiple: true }, label_html: { class: 'btn-primaire text-center align-item-center pt-2' }  %>
+  <%= f.input :photos, as: :file, input_html: { class: 'd-none', multiple: true }, label_html: { class: 'btn m-0' }  %>
   <hr>
-  <%= f.submit 'Create a star', class: 'btn-primaire m-2' %>
+  <%= f.submit 'Add star', class: 'btn' %>
 <% end %>

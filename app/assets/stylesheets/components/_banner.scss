@@ -1,11 +1,9 @@
-.banner {
+.banner-container {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
 }
 
-.banner h1 {
-  margin: 0;
+.banner-home h1 {
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
   font-size: 40px;
@@ -14,12 +12,8 @@
 
 .banner-home {
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.2)), 
+    linear-gradient(rgba(255, 255, 255, 0.15),rgba(255, 255, 255, 0.15)), 
     image-url('banner-home.jpg');
+    padding: 150px 0;
 }
 
-.banner-index {
-  background-image: 
-  linear-gradient(rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.2)), 
-  image-url('banner-index.png');
-}

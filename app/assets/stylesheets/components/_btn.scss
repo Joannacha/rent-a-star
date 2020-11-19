@@ -1,6 +1,8 @@
-.btn-primaire {
-  background-color: #7E2F7B;
+.btn {
+  background-color: #ea728c;
   width: 130px;
   height: 40px;
-  color: white;
+  color: white !important;
+  border-radius: 5px;
+  text-transform: uppercase;
 }
