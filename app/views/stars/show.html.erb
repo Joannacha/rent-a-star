@@ -28,8 +28,9 @@
         <%= f.input :start_date %>
         <%= f.input :end_date %>
         <%= f.submit "Add a booking" %>
+        <% end %>
       <% else %>
-        <%= link_to "Update Star Informations",  edit_star_path(@star), class: "btn btn-primary"%>
+        <%= link_to "Update Star",  edit_star_path(@star), class: "btn btn-primary"%>
       <% end %>
      </div>
  
