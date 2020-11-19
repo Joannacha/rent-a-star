@@ -34,21 +34,15 @@ end
     price: rand(100..10000),
     user_id: u_ids.sample(1).first.to_i,
     galaxy: Faker::Space.galaxy,
-    description: Faker::Lorem.paragraph
   )
+  star.description = "#{star.name} is a wonderful star from the #{star.galaxy} galaxy.
+  It lives close to the #{Faker::Space.moon} moon, inside the #{Faker::Space.constellation} constellation.
+  It was born #{rand(1..100000)} million years ago and was discovered by the #{Faker::Space.agency}.
+  Its #{Faker::Space.distance_measurement} away from earth."
   star.save!
 end
 
-# 10.times do
-#   star = Star.new(
-#     name: Faker::Movies::StarWars.unique.planet,
-#     price: rand(100..10000),
-#     user_id: rand(25..34),
-#     galaxy: Faker::Space.galaxy,
-#     description: Faker::Lorem.paragraph
-#   )
-#   star.save!
-# end
+
 stars = Star.all
 s_ids = []
 stars.each do |star|
