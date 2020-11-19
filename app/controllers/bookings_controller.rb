@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :destroy]
-  before_action :set_star, only: [:create, :destroy]
+  before_action :set_star, only: :create
   def new
     @booking = Booking.new
   end
@@ -30,7 +30,8 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to star_path(@star), notice: 'Booking was successfully destroy'
+    # redirect on my_bookings or on my_listings depending on who deleted the booking
+    redirect_to request.referrer, notice: 'Booking was successfully destroy'
   end
 
   private
