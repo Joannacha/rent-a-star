@@ -3,6 +3,9 @@
 
   </div>
   <div class ="show_description">
+    <% if @star.user == current_user %>
+      You own this star 😀
+    <% end %>
     <p>
       <strong>Name:</strong>
       <%= @star.name %>
@@ -34,7 +37,7 @@
     <% end %>
 
   <% else %>
-    <%= link_to "Update Star Informations",  edit_star_path(@star)%>
+    <%= link_to "Update Star Informations",  edit_star_path(@star), class: "btn btn-primary"%>
   <% end %>
 
 </div>

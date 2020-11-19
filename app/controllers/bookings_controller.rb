@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
 
   def my_bookings
     #@bookings = Booking.where(user_id: current_user.id)
-    @bookings = policy_scope(Booking)#.where(user_id: current_user.id)
+    @bookings = policy_scope(Booking).where(user_id: current_user.id)
   end
 
   def my_listings
