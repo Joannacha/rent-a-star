@@ -12,14 +12,14 @@ Star.delete_all
 puts "Starting the seed"
 
 10.times do
-  users = User.new(
+  user = User.new(
     email: Faker::Internet.email,
     password: "azerty",
     username: Faker::Internet.username,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
   )
-  users.save!
+  user.save!
 end
 
 users =  User.all
@@ -50,13 +50,28 @@ stars.each do |star|
 end
 
 20.times do
-  bookings = Booking.new(
+  booking = Booking.new(
     start_date: Faker::Date.backward(days: rand(1..25)),
     end_date: Faker::Date.forward(days: rand(1..25)),
     user_id: u_ids.sample(1).first.to_i,
     star_id: s_ids.sample(1).first.to_i
   )
-  bookings.save!
+  booking.save!
+end
+
+bookings = Booking.all
+b_ids = []
+bookings.each do |booking|
+  b_ids << booking.id
+end
+
+200.times do
+  review = Review.new(
+    rating: rand(1..5),
+    comment: Faker::Movies::StarWars.wookiee_sentence,
+    booking_id: b_ids.sample(1).first.to_i
+  )
+  review.save!
 end
 
 puts "Seed is done"
