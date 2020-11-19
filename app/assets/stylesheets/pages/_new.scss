@@ -1,32 +1,25 @@
-// // Smallest device
-// @media (min-width: 100px) {
-//   .new-image {
-//     width: 400px !important;
-//   }
-// }
+.form-infos {
+  background-color: transparent;
+}
 
-// // Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) {
-//   .new-image {
-//     width: 400px !important;
-//   }
-// }
+.astronaute {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: absolute;
+  right: -50px;
+}
 
-// // Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) {
-//   .new-image {
-//     width: auto;
-//   }
-// }
+.new-image {
+  max-width: 700px;
+}
 
-// // Large devices (desktops, 992px and up)
-// @media (min-width: 992px) {
-//   .new-image {
-//     width: auto;
-//   }
-// }
+.row {
+  position: relative;
+}
 
-// .new-image {
-//   flex-grow: 1;
-//   overflow: visible;
-// }
+@media(max-width: 768px) {
+  .astronaute {
+    right: -250px;
+  }
+}

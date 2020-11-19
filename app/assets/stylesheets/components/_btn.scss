@@ -1,8 +1,22 @@
 .btn {
   background-color: #ea728c;
-  width: 130px;
+  min-width: 120px;
   height: 40px;
   color: white !important;
   border-radius: 5px;
   text-transform: uppercase;
+
+  &:hover {
+    opacity: 0.8;
+    transition-duration: 1s;
+  }
+}
+
+.btn-flatpickr {
+  // background-color: #ea728c !important;
+  width: 130px !important;
+  height: 40px !important;
+  border-radius: 5px !important;
+  text-transform: none !important;
+  color: black !important;
 }
