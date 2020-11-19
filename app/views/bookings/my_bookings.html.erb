@@ -8,9 +8,9 @@
       <div class="col-12 col-lg-4 booking">
         <div class="booking-box">
           <% if booking.star.photos.empty? %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" class="planet-img"/>
           <% else  %>
-            <%= cl_image_tag(booking.star.photos.first.key) %>
+            <%= cl_image_tag(booking.star.photos.first.key, class: "planet-img") %>
           <% end %>
           <div class="card-trip-infos">
             <div class="trip-desc">
@@ -19,6 +19,12 @@
                 <h2> <%= booking.star.name %> </h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit.</p>
               </div>
+              <% if booking.star.user.photo.attached? %>
+                <%= cl_image_tag(booking.star.user.photo.key, class: "avatar" )%>
+              <% else %>
+                <img src="<%= asset_path('default-avatar.png') %>"
+                     class="avatar">
+              <% end %>
               <%= link_to "Cancel",
                   booking_path(booking),
                   method: :delete,

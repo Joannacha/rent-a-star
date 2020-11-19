@@ -9,7 +9,8 @@ def configure_permitted_parameters
                        :password_confirmation,
                        :first_name,
                        :last_name,
-                       :username
+                       :username,
+                       :photo
                        )
   end
   devise_parameter_sanitizer.permit(:account_update) do |user_params|
@@ -21,6 +22,7 @@ def configure_permitted_parameters
                        :password,
                        :password_confirmation,
                        :current_password,
+                       :photo
                         )
   end
 end
