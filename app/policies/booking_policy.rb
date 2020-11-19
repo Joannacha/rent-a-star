@@ -5,7 +5,7 @@ class BookingPolicy < ApplicationPolicy
 
   def show?
     # 2 users can see a booking : the booking maker and the star owner
-    user == record.user || user == record.star.user_id
+    user == record.user || user == record.star.user
   end
 
   def update?
@@ -15,7 +15,7 @@ class BookingPolicy < ApplicationPolicy
 
   def destroy?
     # 2 users can destroy a booking : the booking maker and the star owner
-    user == record.user || user == record.star.user_id
+    user == record.user || user == record.star.user
   end
 
   class Scope < Scope
