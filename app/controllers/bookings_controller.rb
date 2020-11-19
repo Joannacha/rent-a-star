@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @review = @booking.review.new
+    @review = @booking.reviews.new
     authorize @review, :create? # w/o :create we would use the show? method of ReviewPolicy ?
   end
 

@@ -9,7 +9,6 @@ class StarsController < ApplicationController
   def show
     @booking = @star.bookings.new
     authorize @star
-    authorize @booking, :new?
   end
 
   def new

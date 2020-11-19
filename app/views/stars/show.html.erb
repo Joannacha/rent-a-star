@@ -19,16 +19,22 @@
       <%= @star.user.username %>
     </p>
 
+
     <% @star.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
   </div>
 
-  <%= simple_form_for [@star, @booking] do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit "Add a booking" %>
-<% end %>
+  <% if policy(@booking).create? %>
 
+    <%= simple_form_for [@star, @booking] do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit "Add a booking" %>
+    <% end %>
+
+  <% else %>
+    <%= link_to "Update Star Informations",  edit_star_path(@star)%>
+  <% end %>
 
 </div>

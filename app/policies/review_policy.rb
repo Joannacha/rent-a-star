@@ -1,6 +1,6 @@
 class ReviewPolicy < ApplicationPolicy
   def create?
-    @record.boooking.user == user
+    @record.booking.user == user
   end
 
   def show?
