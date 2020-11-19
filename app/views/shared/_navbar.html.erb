@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <a class="navbar-brand" href="/">
-    <%= image_tag 'logo.jpg' %>
+    <%= image_tag 'logo.png' %>
 </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,26 +12,30 @@
       <% if user_signed_in? %>
         <li class="nav-item active">
           <a class="nav-link" href="/stars/new">Rent your star</a>
-        </li>      
-        <li class="nav-item dropdown">
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key ,class: "avatar-large dropdown-toggle",
-                id: "navbarDropdown", "data-toggle" => "dropdown", "aria-haspopup" => "true",
-                "aria-expanded" => "false"%>
-          <% else %>
-            <img class="avatar-large dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= asset_path('default-avatar.png') %>" />
-          <% end %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/my_bookings">My bookings</a>
-            <a class="dropdown-item" href="/my_listings">My listings</a>
-            <a class="dropdown-item" href="#">My profile</a>
-            <%= link_to "Sign out",
-                        destroy_user_session_path(@session),
-                        method: :delete,
-                        data: { confirm: "Are you sure you want to logout ?" },
-                        class: "dropdown-item" %>
-          </div>
         </li>
+        <div class="dropdown">
+          <div class="btn-ghost">
+            <li class="nav-item">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key ,class: "avatar-large dropdown-toggle",
+                    id: "navbarDropdown", "data-toggle" => "dropdown", "aria-haspopup" => "true",
+                    "aria-expanded" => "false"%>
+              <% else %>
+                <img class="avatar-large dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= asset_path('default-avatar.png') %>" />
+              <% end %>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/my_bookings">My bookings</a>
+                <a class="dropdown-item" href="/my_listings">My listings</a>
+                <a class="dropdown-item" href="#">My profile</a>
+                <%= link_to "Sign out",
+                            destroy_user_session_path(@session),
+                            method: :delete,
+                            data: { confirm: "Are you sure you want to logout ?" },
+                            class: "dropdown-item" %>
+              </div>
+            </li>
+          </div>
+        </div>
       <% else %>
         <li class="nav-item active">
           <a class="nav-link" href="#">Rent your star</a>
