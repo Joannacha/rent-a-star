@@ -26,10 +26,22 @@
   color:#FFE042;
 }
 
-.fa-star:hover {
+.fas {
+  font-size: 15px;
   color:#FFE042;
 }
 
+.far {
+  color:black;
+  font-size: 15px;
+  opacity: 0.7;
+
+  &:hover {
+    color:#FFE042;
+    opacity: 1;
+  }
+
 .footer {
   z-index: 4;
+
 }

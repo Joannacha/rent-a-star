@@ -27,14 +27,15 @@
   <div class="cards-star">
     <% @stars.each do |star| %>
       <div class="card-star d-flex flex-column">
-      <% if star.photos.empty? %>
-        <div class="card-star-image" style="background-image: url('<%= image_url("default-planet.png") %>');">
-      <% else  %>
-        <div class="card-star-image" style="background-image: url('<%= url_for(star.photos.first) %>');">
-      <% end  %>
+        <div class="card-star-image">
+          <% if star.photos.empty? %>
+              <img src="<%= asset_path('default-planet.png') %>"/>
+          <% else  %>
+              <%= cl_image_tag(star.photos.first.key, height: 350) %>
+          <% end  %>
         </div>
         <div class="card-star-infos d-flex flex-column justify-content-around m-3">
-          <h1 class="m-0"><%= link_to star.name.upcase, star_path(star) %></h1>
+          <h1 class="m-0"><span class="underline-small"><%= link_to star.name.upcase, star_path(star) %></span></h1>
           <div class="rating">
             <% star.average_rating.times do %>
               <i class="fas fa-star pb-1"></i>
@@ -42,7 +43,7 @@
             <% (5 - star.average_rating).times do %>
               <i class="far fa-star"></i>
             <% end %>
-            ( <%= star.reviews.count %> <%= star.reviews.count > 1 ? "ratings" : "rating" %> )
+            <%= star.reviews.count %> <%= star.reviews.count > 1 ? "ratings" : "rating" %>
           </div>
           <%# <%= link_to 'Rent this star', star_path(star), class: "btn" %>
         </div>
