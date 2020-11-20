@@ -5,7 +5,7 @@
   <div class="col-9 col-md-6">
     <div class="border-container p-3">
       <div class="form-infos">
-        <h3>Update your star</h3>
+        <h3><span class="underline">Update your star</span></h3>
         <%= render 'form', star: @star %>
         <div class="btn btn-delete">
           <%= link_to 'Delete star', star_path(@star), method: :delete, data: { confirm: "Are you sure?" } %>
