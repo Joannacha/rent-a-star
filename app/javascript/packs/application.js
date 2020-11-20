@@ -35,8 +35,8 @@ document.addEventListener('turbolinks:load', () => {
   calendar();
   initSweetalert('#fake-delete', {
     title: "Are you sure?",
-    text: "You will not be able to recover this imaginary file!",
-    icon: "warning",
+    text: "You cant undo this action",
+    icon: "error",
     buttons: [
             'No, cancel it!',
             'Yes, I am sure!'
