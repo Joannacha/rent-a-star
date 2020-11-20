@@ -6,9 +6,11 @@
   <%= link_to "Cancel booking",
               booking_path(@booking),
               method: :delete,
-              data: { confirm: 'Are you sure?' },
-              class: "btn btn-danger"
+              class: "btn btn-danger hidden",
+              style: "display: none",
+              id: "btn_delete"
   %>
+<button class = "btn" id="fake-delete">Cancel booking</button>
 <br>
 <%= simple_form_for [ @booking, @review ] do |f| %>
   <%= f.input :rating, :required => false %>

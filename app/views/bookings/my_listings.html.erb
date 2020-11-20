@@ -21,13 +21,14 @@
               <%= link_to "Cancel",
                   booking_path(booking),
                   method: :delete,
-                  data: { confirm: 'Are you sure?' },
-                  class: "trip-delete"
+                  class: "trip-delete",
+                  style: "display: none",
+                  id: "btn_delete"
               %>
+            <button class = "btn" id="fake-delete"> Cancel</button>
             </div>
           </div>
         </div>
       </div>
     <% end  %>
   </div>
-  
