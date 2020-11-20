@@ -4,22 +4,14 @@
       <h1 class="text-center m-5"><span class="underline">Story of our stars</span></h1>
     </div>
     <div class="col-6 d-flex align-items-center">
-      <p class="m-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et 
-      dolore magna aliqua</p>
+      <p class="m-5">A Holy Grail of modern astronomy is understanding the origin of Edwin Hubble's morphological sequence of galaxy types. What made some collapsing gas clouds turn into elegant spiral systems like our own Milky Way, whereas others became smooth, featureless ellipticals?</p>
     </div>
   </div>
-  <%# <div class="row">
-    <div class="col-6">
-      <h2 class="text-center m-5">Discover the universe</h2>
-    </div>
-  </div> %>
 </div>
 <div class="mx-5 px-5">
   <span class="result-info">
   <% if params[:search] && params[:search][:query] != ""%>
     <%= @nb_results %> search results for : "<%= params[:search][:query] %>"
-  <% else %>
-    Showing all our stars
   <% end %>
   </span>
 </div>

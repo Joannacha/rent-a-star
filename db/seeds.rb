@@ -56,7 +56,7 @@ end
     user_id: u_ids.sample(1).first.to_i,
     star_id: s_ids.sample(1).first.to_i
   )
-  booking.save!
+  booking.save
 end
 
 bookings = Booking.all
@@ -71,7 +71,7 @@ end
     comment: Faker::Movies::StarWars.wookiee_sentence,
     booking_id: b_ids.sample(1).first.to_i
   )
-  review.save!
+  review.save
 end
 
 puts "Seed is done"

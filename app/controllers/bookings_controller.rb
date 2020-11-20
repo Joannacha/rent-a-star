@@ -37,7 +37,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.destroy
     # redirect on my_bookings or on my_listings depending on who deleted the booking
-    redirect_to star_path(@booking.star), notice: 'Booking was successfully destroy'
+    redirect_to star_path(@booking.star)
   end
 
   private
