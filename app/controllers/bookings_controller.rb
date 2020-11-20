@@ -38,6 +38,7 @@ class BookingsController < ApplicationController
     @booking.destroy
     # redirect on my_bookings or on my_listings depending on who deleted the booking
     redirect_to star_path(@booking.star)
+  end
 
   private
 
