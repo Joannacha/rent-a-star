@@ -1,37 +1,110 @@
 
 <div class="container my-5">
   <div class="row justify-content-center my-5">
-      <h1 class="px-auto"> Your trips </h1>
+      <h2 class="px-auto underline"> Your bookings </h2>
   </div>
+
+  <div class="row my-5">
+    <h4>Futur Trips</h4>
+  </div>
+
   <div class="row">
-    <% @bookings.each do |booking| %>
-      <div class="col-12 col-lg-4 booking">
-        <div class="booking-box">
-          <% if booking.star.photos.empty? %>
-            <img src="<%= asset_path('default-planet.png') %>" class="planet-img"/>
-          <% else  %>
-            <%= cl_image_tag(booking.star.photos.first.key, class: "planet-img") %>
-          <% end %>
-          <div class="card-trip-infos">
-            <div class="trip-desc">
-              <div class="trip-text-desc">
-                <h4> <%= booking.start_date %> to <%= booking.end_date %></h4>
-                <h2> <%= booking.star.name %> </h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit.</p>
+    <div class="cards-star">
+      <% futur_bookings = @bookings.select { |booking| booking.end_date > Time.now } %>
+      <% futur_bookings.each do |booking| %>
+        <div class="card-star d-flex flex-column">
+          <div class="card-star-image">
+            <% if booking.star.photos.empty? %>
+                <img src="<%= asset_path('default-planet.png') %>"/>
+            <% else  %>
+                <%= cl_image_tag(booking.star.photos.first.key, height: 350) %>
+            <% end  %>
+          </div>
+          <div class="booking-infos d-flex flex-column justify-content-around mx-3">
+            <div class="star_name d-flex align-items-center justify-content-around">
+              <h1 class="m-0">
+                <span class="underline-small">
+                  <%= link_to booking.star.name.upcase, booking_path(booking) %>
+                </span>
+              </h1>
+            </div>
+            <div class="description-and-owner d-flex justify-content-between">
+              <%# <%= Only extract the first sentence %>
+              <div class="description text-justify mr-3">
+                <%=  booking.star.description.match(/^(.*?)[.?!]\s/)[1]%>
               </div>
               <% if booking.star.user.photo.attached? %>
                 <%= cl_image_tag(booking.star.user.photo.key, class: "avatar" )%>
               <% else %>
                 <img src="<%= asset_path('default-avatar.png') %>"
                      class="avatar">
-              <% end %>
-              <%= link_to "More Details",
-                  booking_path(booking),
-                  class: "trip-details"
-              %>
+              <% end %>              
+            </div>
+            <div class="dates-and-price d-flex align-items-end justify-content-between">
+              <div class="dates text-left">
+                <%= booking.start_date.strftime("%B %d, %Y") %> <br>
+                <%= booking.end_date.strftime("%B %d, %Y") %>
+              </div>
+              <div class="price">
+                <% price = (booking.star.price * (booking.end_date - booking.start_date)).to_i %>
+                <%= price.to_s.reverse.scan(/.{1,3}/).join(',').reverse %> €
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end  %>
+      <% end %>
+    </div>
   </div>
+
+  <div class="row my-4">
+    <h4>Past Trips</h4>
+  </div>
+
+  <div class="row">
+    <div class="cards-star">
+      <% futur_bookings = @bookings.reject { |booking| booking.end_date > Time.now } %>
+      <% futur_bookings.each do |booking| %>
+        <div class="card-star d-flex flex-column">
+          <div class="card-star-image">
+            <% if booking.star.photos.empty? %>
+                <img src="<%= asset_path('default-planet.png') %>"/>
+            <% else  %>
+                <%= cl_image_tag(booking.star.photos.first.key, height: 350) %>
+            <% end  %>
+          </div>
+          <div class="booking-infos d-flex flex-column justify-content-around mx-3 my-1">
+            <div class="star_name d-flex align-items-center justify-content-around">
+              <h1 class="m-0">
+                <span class="underline-small">
+                  <%= link_to booking.star.name.upcase, booking_path(booking) %>
+                </span>
+              </h1>
+            </div>
+            <div class="description-and-owner d-flex justify-content-between mt-3">
+              <%# <%= Only extract the first sentence %>
+              <div class="description text-justify mr-3">
+                <%=  booking.star.description.match(/^(.*?)[.?!]\s/)[1]%>
+              </div>
+              <% if booking.star.user.photo.attached? %>
+                <%= cl_image_tag(booking.star.user.photo.key, class: "avatar" )%>
+              <% else %>
+                <img src="<%= asset_path('default-avatar.png') %>"
+                     class="avatar">
+              <% end %>              
+            </div>
+            <div class="dates-and-price d-flex align-items-end justify-content-between mt-2">
+              <div class="dates text-left">
+                <%= booking.start_date.strftime("%B %d, %Y") %> <br>
+                <%= booking.end_date.strftime("%B %d, %Y") %>
+              </div>
+              <div class="price">
+                <% price = (booking.star.price * (booking.end_date - booking.start_date)).to_i %>
+                <%= price.to_s.reverse.scan(/.{1,3}/).join(',').reverse %> €
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
