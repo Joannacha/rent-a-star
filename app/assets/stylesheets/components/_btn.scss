@@ -38,3 +38,18 @@
     }
   }
 }
+
+.btn-cancel {
+  background-color: #371A45 !important;
+  
+  a {
+    color: white !important;
+    text-transform: uppercase;
+
+    &:hover {
+      opacity: 0.8;
+      transition-duration: 1s;
+      text-decoration: none;
+    }
+  }
+}
