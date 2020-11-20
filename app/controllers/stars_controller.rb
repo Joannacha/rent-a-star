@@ -45,6 +45,7 @@ class StarsController < ApplicationController
   def destroy
     authorize @star
     @star.destroy
+    redirect_to root_path
   end
 
   private
