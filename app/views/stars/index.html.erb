@@ -1,7 +1,7 @@
 <div class="banner-container banner-index">
   <div class="row">
     <div class="col-6 d-flex align-items-center">
-      <h1 class="text-center m-5">Story of our stars</h1>
+      <h1 class="text-center m-5"><span class="underline">Story of our stars</span></h1>
     </div>
     <div class="col-6 d-flex align-items-center">
       <p class="m-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et 
@@ -14,18 +14,28 @@
     </div>
   </div> %>
 </div>
+<div class="mx-5 px-5">
+  <span class="result-info">
+  <% if params[:search][:query] != ""%>
+    <%= @nb_results %> search results for : "<%= params[:search][:query] %>"
+  <% else %>
+    Showing all our stars
+  <% end %>
+  </span>
+</div>
 <div class="grid-container m-5 px-5">
   <div class="cards-star">
     <% @stars.each do |star| %>
       <div class="card-star d-flex flex-column">
-      <% if star.photos.empty? %>
-        <div class="card-star-image" style="background-image: url('<%= image_url("default-planet.png") %>');">
-      <% else  %>
-        <div class="card-star-image" style="background-image: url('<%= url_for(star.photos.first) %>');">
-      <% end  %>
+        <div class="card-star-image">
+          <% if star.photos.empty? %>
+              <img src="<%= asset_path('default-planet.png') %>"/>
+          <% else  %>
+              <%= cl_image_tag(star.photos.first.key, height: 350) %>
+          <% end  %>
         </div>
         <div class="card-star-infos d-flex flex-column justify-content-around m-3">
-          <h1 class="m-0"><%= link_to star.name.upcase, star_path(star) %></h1>
+          <h1 class="m-0"><span class="underline-small"><%= link_to star.name.upcase, star_path(star) %></span></h1>
           <div class="rating">
             <% star.average_rating.times do %>
               <i class="fas fa-star pb-1"></i>
@@ -33,7 +43,7 @@
             <% (5 - star.average_rating).times do %>
               <i class="far fa-star"></i>
             <% end %>
-            ( <%= star.reviews.count %> rating )
+            <%= star.reviews.count %> <%= star.reviews.count > 1 ? "ratings" : "rating" %>
           </div>
           <%# <%= link_to 'Rent this star', star_path(star), class: "btn" %>
         </div>

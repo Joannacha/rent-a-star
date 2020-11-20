@@ -6,6 +6,7 @@
   height: 100px;
   padding: 0px 50px;
   border-top: 2px solid #E5E5E5;
+  // z-index: 3;
 }
 
 .footer-links {
@@ -26,6 +27,19 @@
   color:#FFE042;
 }
 
-.fa-star:hover {
+.fas {
+  font-size: 15px;
   color:#FFE042;
 }
+
+.far {
+  color:black;
+  font-size: 15px;
+  opacity: 0.7;
+
+  &:hover {
+    color:#FFE042;
+    opacity: 1;
+  }
+}
+

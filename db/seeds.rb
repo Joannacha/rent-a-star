@@ -6,20 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Booking.delete_all
+Star.delete_all
+
 puts "Starting the seed"
 
-
-
-
 10.times do
-  users = User.new(
+  user = User.new(
     email: Faker::Internet.email,
     password: "azerty",
     username: Faker::Internet.username,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
   )
+<<<<<<< HEAD
   users.save
+=======
+  user.save!
+>>>>>>> dffad9b63cce8b45c861b00d24255099a7610bf4
 end
 
 users =  User.all
@@ -28,7 +32,7 @@ users.each do |user|
   u_ids << user.id
 end
 
-15.times do
+15.times do |index|
   star = Star.new(
     name: Faker::Space.unique.star,
     price: rand(100..10000),
@@ -39,9 +43,13 @@ end
   It lives close to the #{Faker::Space.moon} moon, inside the #{Faker::Space.constellation} constellation.
   It was born #{rand(1..100000)} million years ago and was discovered by the #{Faker::Space.agency}.
   Its #{Faker::Space.distance_measurement} away from earth."
+<<<<<<< HEAD
   star.save
+=======
+  star.photos.attach(io: File.open("app/assets/images/Stars-#{index < 9 ? "0#{index + 1}" : index + 1}.png"), filename: "star.png", content_type: "image/png")
+  star.save!
+>>>>>>> dffad9b63cce8b45c861b00d24255099a7610bf4
 end
-
 
 stars = Star.all
 s_ids = []
@@ -50,13 +58,32 @@ stars.each do |star|
 end
 
 20.times do
-  bookings = Booking.new(
+  booking = Booking.new(
     start_date: Faker::Date.backward(days: rand(1..25)),
     end_date: Faker::Date.forward(days: rand(1..25)),
     user_id: u_ids.sample(1).first.to_i,
     star_id: s_ids.sample(1).first.to_i
   )
+<<<<<<< HEAD
   bookings.save
+=======
+  booking.save!
+end
+
+bookings = Booking.all
+b_ids = []
+bookings.each do |booking|
+  b_ids << booking.id
+end
+
+200.times do
+  review = Review.new(
+    rating: rand(1..5),
+    comment: Faker::Movies::StarWars.wookiee_sentence,
+    booking_id: b_ids.sample(1).first.to_i
+  )
+  review.save!
+>>>>>>> dffad9b63cce8b45c861b00d24255099a7610bf4
 end
 
 puts "Seed is done"

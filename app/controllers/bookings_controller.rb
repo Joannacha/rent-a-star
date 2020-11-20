@@ -13,9 +13,9 @@ class BookingsController < ApplicationController
     authorize @star, :show?  # w/o :show we would use the create? method of StarPolicy ?
 
     if @booking.save
-      redirect_to star_path(@star), notice: 'Booking was successfully created.'
+      redirect_to booking_path(@booking), notice: 'Booking was successfully created.'
     else
-      render :new
+      render 'stars/show'
     end
   end
 

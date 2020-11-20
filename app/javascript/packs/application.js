@@ -27,10 +27,12 @@ import "bootstrap";
 import { initSweetalert } from 'plugins/init_sweetalert';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { calendar } from "../plugins/init_flatpickr";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+<<<<<<< HEAD
 
   initSweetalert('#fake-delete', {
  title: "Are you sure?",
@@ -59,6 +61,9 @@ initSweetalert('#fake_add', {
     const link = document.querySelector('#add_star_btn');
     link.click();
   }
+=======
+  calendar();
+>>>>>>> dffad9b63cce8b45c861b00d24255099a7610bf4
 });
 
 });

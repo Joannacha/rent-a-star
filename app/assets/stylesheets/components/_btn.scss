@@ -1,10 +1,11 @@
 .btn {
-  background-color: #ea728c;
-  width: 130px;
+  background-color: #ea728c !important;
+  min-width: 120px;
   height: 40px;
   color: white !important;
   border-radius: 5px;
   text-transform: uppercase;
+<<<<<<< HEAD
   visibility:hidden;
 }
 
@@ -17,3 +18,20 @@
   text-transform: uppercase;
   // visibility:hidden;
 }
+=======
+
+  &:hover {
+    opacity: 0.8;
+    transition-duration: 1s;
+  }
+}
+
+.btn-flatpickr {
+  // background-color: #ea728c !important;
+  width: 130px !important;
+  height: 40px !important;
+  border-radius: 5px !important;
+  text-transform: none !important;
+  color: black !important;
+}
+>>>>>>> dffad9b63cce8b45c861b00d24255099a7610bf4
