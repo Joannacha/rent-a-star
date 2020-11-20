@@ -19,7 +19,7 @@ puts "Starting the seed"
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
   )
-  users.save!
+  users.save
 end
 
 users =  User.all
@@ -39,7 +39,7 @@ end
   It lives close to the #{Faker::Space.moon} moon, inside the #{Faker::Space.constellation} constellation.
   It was born #{rand(1..100000)} million years ago and was discovered by the #{Faker::Space.agency}.
   Its #{Faker::Space.distance_measurement} away from earth."
-  star.save!
+  star.save
 end
 
 
@@ -56,7 +56,7 @@ end
     user_id: u_ids.sample(1).first.to_i,
     star_id: s_ids.sample(1).first.to_i
   )
-  bookings.save!
+  bookings.save
 end
 
 puts "Seed is done"
