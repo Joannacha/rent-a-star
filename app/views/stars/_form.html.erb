@@ -5,5 +5,7 @@
   <%= f.input :galaxy, :required => false %>
   <%= f.input :photos, as: :file, input_html: { class: 'd-none', multiple: true }, label_html: { class: 'btn m-0' }  %>
   <hr>
-  <%= f.submit class: 'btn'%>
+  <button class = "btn" id="fake_add"> Add star</button>
+  <%= f.submit 'Add star', class: 'btn-hidden', id: "add_star_btn"%>
+
 <% end %>
