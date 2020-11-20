@@ -16,7 +16,7 @@
 </div>
 <div class="mx-5 px-5">
   <span class="result-info">
-  <% if params[:search][:query] != ""%>
+  <% if params[:search] && params[:search][:query] != ""%>
     <%= @nb_results %> search results for : "<%= params[:search][:query] %>"
   <% else %>
     Showing all our stars
