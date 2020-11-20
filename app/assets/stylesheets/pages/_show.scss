@@ -24,12 +24,12 @@ h1 {
   justify-content: flex-end;
   width: 100%;
   position: absolute;
-  left: -600px;
-  top: -100px;
+  left: -500px;
+  top: -200px;
 }
 
 .planet-image {
-  width: 1000px;
+  width: 1100px;
 }
 
 .row {
@@ -39,6 +39,7 @@ h1 {
 @media(max-width: 992px) {
   .planet {
     left: -200px;
+    top: -100px;
   }
   .planet-image {
     width: 800px;
@@ -47,10 +48,17 @@ h1 {
 
 @media(max-width: 768px) {
   .planet {
-    left: 100px;
+    left: 0px;
+    top: -100px;
   }
   .planet-image {
     width: 700px;
+  }
+}
+
+@media(max-width: 568px) {
+  .planet {
+    left: 100px;
   }
 }
 

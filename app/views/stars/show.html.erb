@@ -7,7 +7,7 @@
         <%= cl_image_tag(@star.photos.first.key, class: "planet-image") %>
     <% end %>
   </div>
-  <div class="col-9 col-sm-6 offset-3 col-lg-6 offset-6 px-4 py-3 mb-3">
+  <div class="col-9 offset-3 col-lg-6 offset-lg-6 px-4 py-3 mb-3">
     <div class="details d-flex flex-column">
       <div class="owner mb-2 d-flex align-items-center">
         <% if @star.user.photo.attached? %>
