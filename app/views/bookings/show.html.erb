@@ -1,19 +1,54 @@
-
-<h1> Booking for <strong><%= @booking.star.name %></strong> </h1>
-<h3> <%= (@booking.star.price * (@booking.end_date - @booking.start_date)).to_i %> €</h3>
-<p> <%= @booking.start_date %>  to  <%= @booking.end_date %></p>
-<br>
-  <%= link_to "Cancel booking",
-              booking_path(@booking),
-              method: :delete,
-              class: "btn btn-danger hidden",
-              style: "display: none",
-              id: "btn_delete"
-  %>
-<button class = "btn" id="fake-delete">Cancel booking</button>
-<br>
-<%= simple_form_for [ @booking, @review ] do |f| %>
-  <%= f.input :rating, :required => false %>
-  <%= f.input :comment, :required => false %>
-  <%= f.submit "Add a review" %>
-<% end %>
+<div class="row mx-5 my-3 align-items-center">
+  <div class="planet">
+    <% if @booking.star.photos.empty? %>
+        <img src="<%= asset_path('default-planet.png') %>" class="planet-image"/>
+    <% else  %>
+        <%= cl_image_tag(@booking.star.photos.first.key, class: "planet-image") %>
+    <% end %>
+  </div>
+  <div class="col-9 offset-3 col-lg-6 offset-lg-6 px-4 py-3 mb-3 booking-infos">
+    <div class="details d-flex flex-column">
+      <div class="owner mb-2 d-flex align-items-center">
+        <% if @booking.star.user.photo.attached? %>
+          <%= cl_image_tag(@booking.star.user.photo.key, class: "avatar show-avatar" )%>
+        <% else %>
+          <img src="<%= asset_path('default-avatar.png') %>" class="avatar show-avatar">
+        <% end %>
+        <p class="ml-1 m-0">
+          <% if @booking.star.user == current_user %>
+            You own this star 😀
+          <% else %>
+          <%= @booking.star.user.first_name %> <%= @booking.star.user.last_name %> owns this star
+          <% end %></p>
+      </div>
+      <h1>Booking for <%= @booking.star.name %></h1>
+      <hr class="m-0">
+      <h1>Dates</h1>
+      <p>From <%= @booking.start_date %> to <%= @booking.end_date %></p>
+      <hr class="m-0">      
+      <h1>Description</h1>
+      <p class="text-justify description"><%= @booking.star.description %></p>
+      <hr class="m-0">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1>Total Price</h1>
+        <div class="price">
+          <h3> <%= (@booking.star.price * (@booking.end_date - @booking.start_date)).to_i %> €</h3>
+        </div>
+      </div>
+      <hr class="m-0">
+    </div>
+    <div class="d-flex justify-content-between align-items-end mt-2">
+      <div class="add-review">
+        <%= simple_form_for [ @booking, @review ] do |f| %>
+          <%= f.input :rating, :required => false %>
+          <%= f.input :comment, :required => false %>
+          <%= f.submit "Add a review", class: "btn" %>
+        <% end %>
+      </div>
+      <div class="cancel">
+        <button class = "btn btn-cancel" id="fake-delete">Cancel booking</button>
+        <%= link_to "Cancel booking", booking_path(@booking), method: :delete, class: "btn btn-cancel", style: "display: none",id: "btn_delete",  %>
+      </div>
+    </div>
+  </div>
+</div>

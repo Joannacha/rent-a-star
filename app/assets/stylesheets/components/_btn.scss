@@ -43,12 +43,17 @@
   visibility: hidden;
 }
 
-// .fake-btn {
-//   background-color: #ea728c;
-//   width: 130px;
-//   height: 40px;
-//   color: white !important;
-//   border-radius: 5px;
-//   text-transform: uppercase;
-//   // visibility:hidden;
-// }
+.btn-cancel {
+  background-color: #371A45 !important;
+  
+  a {
+    color: white !important;
+    text-transform: uppercase;
+
+    &:hover {
+      opacity: 0.8;
+      transition-duration: 1s;
+      text-decoration: none;
+    }
+  }
+}
