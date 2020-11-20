@@ -49,20 +49,22 @@
       </div>
     </div>
     <div class="booking d-flex flex-column">
-      <% if (user_signed_in? && policy(@booking).create?) || !user_signed_in? %>
       <div class="select-dates">
-        <p>Select dates</p>
-        <%= simple_form_for [@star, @booking] do |f| %>
-          <div class="d-flex justify-content-around">
-            <%= f.input :start_date, label: false, input_html: { id: "start-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "Start date" %>
-            <%= f.input :end_date, label: false, input_html: { id: "end-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "End date" %>
-            <%= f.submit "Book now", class: "btn" %>
+        <% if (user_signed_in? && policy(@booking).create?) || !user_signed_in? %>
+          <p>Select dates</p>
+          <%= simple_form_for [@star, @booking] do |f| %>
+            <div class="d-flex justify-content-around">
+              <%= f.input :start_date, label: false, input_html: { id: "start-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "Start date" %>
+              <%= f.input :end_date, label: false, input_html: { id: "end-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "End date" %>
+              <%= f.submit "Book now", class: "btn" %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="d-flex justify-content-center">
+            <%= link_to "Update Star",  edit_star_path(@star), class: "btn"%>
           </div>
         <% end %>
-      <% else %>
-        <%= link_to "Update Star",  edit_star_path(@star), class: "btn"%>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>
