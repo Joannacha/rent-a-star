@@ -6,7 +6,7 @@
         <%= cl_image_tag(@star.photos.first.key, class: "planet-image") %>
     <% end %>
   </div>
-  <div class="col-9 col-sm-6 offset-3 col-lg-6 offset-6 px-4 py-3 mb-3">
+  <div class="col-9 offset-3 col-lg-6 offset-lg-6 px-4 py-3 mb-3 star-infos">
     <div class="details d-flex flex-column">
       <div class="owner mb-2 d-flex align-items-center">
         <% if @star.user.photo.attached? %>
@@ -49,19 +49,22 @@
       </div>
     </div>
     <div class="booking d-flex flex-column">
-      <% if (user_signed_in? && policy(@booking).create?) || !user_signed_in? %>
       <div class="select-dates">
-        <p>Select dates</p>
-        <%= simple_form_for [@star, @booking] do |f| %>
-          <div class="d-flex justify-content-around">
-          <%= f.input :start_date, label: false, input_html: { id: "start-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "Start date" %>
-          <%= f.input :end_date, label: false, input_html: { id: "end-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "End date" %>
-          <%= f.submit "Book now", class: "btn" %>
-        <% end %>
+        <% if (user_signed_in? && policy(@booking).create?) || !user_signed_in? %>
+          <p>Select dates</p>
+          <%= simple_form_for [@star, @booking] do |f| %>
+            <div class="d-flex justify-content-around">
+              <%= f.input :start_date, label: false, input_html: { id: "start-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "Start date" %>
+              <%= f.input :end_date, label: false, input_html: { id: "end-date", class: "btn btn-flatpickr flatpickr" }, as: :string, placeholder: "End date" %>
+              <%= f.submit "Book now", class: "btn" %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="d-flex justify-content-center">
+            <%= link_to "Update Star",  edit_star_path(@star), class: "btn"%>
           </div>
-      <% else %>
-        <%= link_to "Update Star",  edit_star_path(@star), class: "btn"%>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
