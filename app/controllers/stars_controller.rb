@@ -27,7 +27,6 @@ class StarsController < ApplicationController
     @star.user = current_user
     if @star.save
       redirect_to star_path(@star)
-      flash[:alert] = "L'étoile a bien été créée"
     else
       render :new
     end
