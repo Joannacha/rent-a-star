@@ -20,3 +20,21 @@
   text-transform: none !important;
   color: black !important;
 }
+
+.btn-delete {
+  background-color: #371A45 !important;
+  position: absolute;
+  bottom: 18px;
+  right: 30px;
+
+  a {
+    color: white !important;
+    text-transform: uppercase;
+
+    &:hover {
+      opacity: 0.8;
+      transition-duration: 1s;
+      text-decoration: none;
+    }
+  }
+}
